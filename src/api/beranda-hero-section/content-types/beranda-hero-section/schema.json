@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "beranda_hero_sections",
+  "info": {
+    "singularName": "beranda-hero-section",
+    "pluralName": "beranda-hero-sections",
+    "displayName": "berandaHeroSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "berandaHeroTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Panggil Tukang dari Rumah kapanpun"
+    },
+    "berandaHeroSubtitle": {
+      "type": "string",
+      "default": "Mudah, Cepat, dan Terpercaya",
+      "required": true
+    },
+    "berandaHeroButton1": {
+      "type": "string",
+      "required": true,
+      "default": "Download"
+    },
+    "berandaHeroButton2": {
+      "type": "string",
+      "default": "Tentang Kami",
+      "required": true
+    },
+    "berandaHeroVideo": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    }
+  }
+}
