@@ -1,46 +1,5 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiBerandaHeroSectionBerandaHeroSection
-  extends Struct.SingleTypeSchema {
-  collectionName: 'beranda_hero_sections';
-  info: {
-    singularName: 'beranda-hero-section';
-    pluralName: 'beranda-hero-sections';
-    displayName: 'berandaHeroSection';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    berandaHeroTitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Panggil Tukang dari Rumah kapanpun'>;
-    berandaHeroSubtitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Mudah, Cepat, dan Terpercaya'>;
-    berandaHeroButton1: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Download'>;
-    berandaHeroButton2: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Tentang Kami'>;
-    berandaHeroVideo: Schema.Attribute.Media<'videos'>;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::beranda-hero-section.beranda-hero-section'
-    > &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -536,6 +495,85 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiBerandaHeroSectionBerandaHeroSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'beranda_hero_sections';
+  info: {
+    singularName: 'beranda-hero-section';
+    pluralName: 'beranda-hero-sections';
+    displayName: 'berandaHeroSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    berandaHeroTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Panggil Tukang dari Rumah kapanpun'>;
+    berandaHeroSubtitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Mudah, Cepat, dan Terpercaya'>;
+    berandaHeroButton1: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Download'>;
+    berandaHeroButton2: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Tentang Kami'>;
+    berandaHeroVideo: Schema.Attribute.Media<'videos'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::beranda-hero-section.beranda-hero-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCaraPesanCaraPesan extends Struct.CollectionTypeSchema {
+  collectionName: 'cara_pesans';
+  info: {
+    singularName: 'cara-pesan';
+    pluralName: 'cara-pesans';
+    displayName: 'caraPesan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    caraPesanNo: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 8;
+        },
+        number
+      >;
+    caraPesanTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    caraPesanSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cara-pesan.cara-pesan'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -908,7 +946,6 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -919,6 +956,8 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
+      'api::cara-pesan.cara-pesan': ApiCaraPesanCaraPesan;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

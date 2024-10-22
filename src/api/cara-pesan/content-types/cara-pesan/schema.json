@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cara_pesans",
+  "info": {
+    "singularName": "cara-pesan",
+    "pluralName": "cara-pesans",
+    "displayName": "caraPesan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "caraPesanNo": {
+      "type": "integer",
+      "required": true,
+      "max": 8,
+      "unique": true
+    },
+    "caraPesanTitle": {
+      "type": "string",
+      "required": true
+    },
+    "caraPesanSubtitle": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
