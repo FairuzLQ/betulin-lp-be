@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "layanan_hero_sections",
+  "info": {
+    "singularName": "layanan-hero-section",
+    "pluralName": "layanan-hero-sections",
+    "displayName": "LayananHeroSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "LayananHeroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "LayananHeroSubtitle": {
+      "type": "string",
+      "required": true
+    },
+    "LayananHeroButton": {
+      "type": "string",
+      "required": true
+    },
+    "LayananHeroImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

@@ -673,6 +673,39 @@ export interface ApiLayananLayanan extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLayananHeroSectionLayananHeroSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'layanan_hero_sections';
+  info: {
+    singularName: 'layanan-hero-section';
+    pluralName: 'layanan-hero-sections';
+    displayName: 'LayananHeroSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    LayananHeroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    LayananHeroSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    LayananHeroButton: Schema.Attribute.String & Schema.Attribute.Required;
+    LayananHeroImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::layanan-hero-section.layanan-hero-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -1060,6 +1093,7 @@ declare module '@strapi/strapi' {
       'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
       'api::layanan.layanan': ApiLayananLayanan;
+      'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
