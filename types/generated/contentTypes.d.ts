@@ -574,6 +574,105 @@ export interface ApiCaraPesanCaraPesan extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHubungiKamiSectionHubungiKamiSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'hubungi_kami_sections';
+  info: {
+    singularName: 'hubungi-kami-section';
+    pluralName: 'hubungi-kami-sections';
+    displayName: 'HubungiKamiSection';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    HubungiKamiTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    HubungiKamiSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    HubungiKamiButton: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hubungi-kami-section.hubungi-kami-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiKategoriLayananKategoriLayanan
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'kategori_layanans';
+  info: {
+    singularName: 'kategori-layanan';
+    pluralName: 'kategori-layanans';
+    displayName: 'KategoriLayanan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NamaKategori: Schema.Attribute.String & Schema.Attribute.Required;
+    layanans: Schema.Attribute.Relation<'oneToMany', 'api::layanan.layanan'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kategori-layanan.kategori-layanan'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLayananLayanan extends Struct.CollectionTypeSchema {
+  collectionName: 'layanans';
+  info: {
+    singularName: 'layanan';
+    pluralName: 'layanans';
+    displayName: 'Layanan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NamaLayanan: Schema.Attribute.String & Schema.Attribute.Required;
+    kategori_layanan: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::kategori-layanan.kategori-layanan'
+    >;
+    ExcerptLayanan: Schema.Attribute.String & Schema.Attribute.Required;
+    DetailLayanan: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    IkonLayanan: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    BackgroundLayanan: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::layanan.layanan'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -958,6 +1057,9 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
       'api::cara-pesan.cara-pesan': ApiCaraPesanCaraPesan;
+      'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
+      'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
+      'api::layanan.layanan': ApiLayananLayanan;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

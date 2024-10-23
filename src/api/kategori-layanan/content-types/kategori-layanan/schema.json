@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kategori_layanans",
+  "info": {
+    "singularName": "kategori-layanan",
+    "pluralName": "kategori-layanans",
+    "displayName": "KategoriLayanan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NamaKategori": {
+      "type": "string",
+      "required": true
+    },
+    "layanans": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::layanan.layanan",
+      "mappedBy": "kategori_layanan"
+    }
+  }
+}

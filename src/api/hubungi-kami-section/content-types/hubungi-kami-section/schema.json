@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "hubungi_kami_sections",
+  "info": {
+    "singularName": "hubungi-kami-section",
+    "pluralName": "hubungi-kami-sections",
+    "displayName": "HubungiKamiSection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "HubungiKamiTitle": {
+      "type": "string",
+      "required": true
+    },
+    "HubungiKamiSubtitle": {
+      "type": "string",
+      "required": true
+    },
+    "HubungiKamiButton": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
