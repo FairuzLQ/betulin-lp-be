@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "penulis_artikels",
+  "info": {
+    "singularName": "penulis-artikel",
+    "pluralName": "penulis-artikels",
+    "displayName": "PenulisArtikel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NamaPenulis": {
+      "type": "string",
+      "required": true
+    },
+    "RolePenulis": {
+      "type": "string"
+    },
+    "EmailPenulis": {
+      "type": "email"
+    },
+    "TotalViewPenulis": {
+      "type": "integer",
+      "private": true
+    },
+    "artikels": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artikel.artikel",
+      "mappedBy": "penulis_artikel"
+    }
+  }
+}

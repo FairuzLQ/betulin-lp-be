@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artikels",
+  "info": {
+    "singularName": "artikel",
+    "pluralName": "artikels",
+    "displayName": "Artikel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TitleArtikel": {
+      "type": "string",
+      "required": true
+    },
+    "FeaturedImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "ExcerptArtikel": {
+      "type": "text",
+      "maxLength": 130,
+      "required": true
+    },
+    "penulis_artikel": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::penulis-artikel.penulis-artikel",
+      "inversedBy": "artikels"
+    },
+    "TglArtikel": {
+      "type": "date",
+      "required": true
+    },
+    "kategori_artikel": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::kategori-artikel.kategori-artikel",
+      "inversedBy": "artikels"
+    },
+    "DetailArtikel": {
+      "type": "blocks",
+      "required": true
+    },
+    "tag_artikels": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag-artikel.tag-artikel",
+      "inversedBy": "artikels"
+    },
+    "TotalViewArtikel": {
+      "type": "integer"
+    }
+  }
+}

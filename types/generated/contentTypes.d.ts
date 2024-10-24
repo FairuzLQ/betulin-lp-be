@@ -495,6 +495,55 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiArtikelArtikel extends Struct.CollectionTypeSchema {
+  collectionName: 'artikels';
+  info: {
+    singularName: 'artikel';
+    pluralName: 'artikels';
+    displayName: 'Artikel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    TitleArtikel: Schema.Attribute.String & Schema.Attribute.Required;
+    FeaturedImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    ExcerptArtikel: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 130;
+      }>;
+    penulis_artikel: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::penulis-artikel.penulis-artikel'
+    >;
+    TglArtikel: Schema.Attribute.Date & Schema.Attribute.Required;
+    kategori_artikel: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::kategori-artikel.kategori-artikel'
+    >;
+    DetailArtikel: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    tag_artikels: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tag-artikel.tag-artikel'
+    >;
+    TotalViewArtikel: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::artikel.artikel'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBerandaHeroSectionBerandaHeroSection
   extends Struct.SingleTypeSchema {
   collectionName: 'beranda_hero_sections';
@@ -606,6 +655,37 @@ export interface ApiHubungiKamiSectionHubungiKamiSection
   };
 }
 
+export interface ApiKategoriArtikelKategoriArtikel
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'kategori_artikels';
+  info: {
+    singularName: 'kategori-artikel';
+    pluralName: 'kategori-artikels';
+    displayName: 'KategoriArtikel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NamaKategori: Schema.Attribute.String & Schema.Attribute.Required;
+    SlugKategori: Schema.Attribute.String & Schema.Attribute.Required;
+    artikels: Schema.Attribute.Relation<'oneToMany', 'api::artikel.artikel'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kategori-artikel.kategori-artikel'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiKategoriLayananKategoriLayanan
   extends Struct.CollectionTypeSchema {
   collectionName: 'kategori_layanans';
@@ -701,6 +781,70 @@ export interface ApiLayananHeroSectionLayananHeroSection
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::layanan-hero-section.layanan-hero-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPenulisArtikelPenulisArtikel
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'penulis_artikels';
+  info: {
+    singularName: 'penulis-artikel';
+    pluralName: 'penulis-artikels';
+    displayName: 'PenulisArtikel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NamaPenulis: Schema.Attribute.String & Schema.Attribute.Required;
+    RolePenulis: Schema.Attribute.String;
+    EmailPenulis: Schema.Attribute.Email;
+    TotalViewPenulis: Schema.Attribute.Integer & Schema.Attribute.Private;
+    artikels: Schema.Attribute.Relation<'oneToMany', 'api::artikel.artikel'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::penulis-artikel.penulis-artikel'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTagArtikelTagArtikel extends Struct.CollectionTypeSchema {
+  collectionName: 'tag_artikels';
+  info: {
+    singularName: 'tag-artikel';
+    pluralName: 'tag-artikels';
+    displayName: 'TagArtikel';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NamaTag: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    artikels: Schema.Attribute.Relation<'manyToMany', 'api::artikel.artikel'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tag-artikel.tag-artikel'
     > &
       Schema.Attribute.Private;
   };
@@ -1088,12 +1232,16 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::artikel.artikel': ApiArtikelArtikel;
       'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
       'api::cara-pesan.cara-pesan': ApiCaraPesanCaraPesan;
       'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
+      'api::kategori-artikel.kategori-artikel': ApiKategoriArtikelKategoriArtikel;
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
       'api::layanan.layanan': ApiLayananLayanan;
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
+      'api::penulis-artikel.penulis-artikel': ApiPenulisArtikelPenulisArtikel;
+      'api::tag-artikel.tag-artikel': ApiTagArtikelTagArtikel;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
