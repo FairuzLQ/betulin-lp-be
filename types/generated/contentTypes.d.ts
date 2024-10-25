@@ -716,6 +716,41 @@ export interface ApiKategoriLayananKategoriLayanan
   };
 }
 
+export interface ApiKebijakanPrivasiKebijakanPrivasi
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'kebijakan_privasis';
+  info: {
+    singularName: 'kebijakan-privasi';
+    pluralName: 'kebijakan-privasis';
+    displayName: 'KebijakanPrivasi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    SubtitleKebijakanPrivasi: Schema.Attribute.String;
+    UpdatedKebijakanPrivasi: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'2024-10-25'>;
+    PoinIntiPerubahanKebijakanPrivasi: Schema.Attribute.String &
+      Schema.Attribute.Required;
+    DetailKebijakanPrivasi: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kebijakan-privasi.kebijakan-privasi'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLayananLayanan extends Struct.CollectionTypeSchema {
   collectionName: 'layanans';
   info: {
@@ -786,6 +821,49 @@ export interface ApiLayananHeroSectionLayananHeroSection
   };
 }
 
+export interface ApiLowonganKerjaLowonganKerja
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'lowongan_kerjas';
+  info: {
+    singularName: 'lowongan-kerja';
+    pluralName: 'lowongan-kerjas';
+    displayName: 'LowonganKerja';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    RoleKerja: Schema.Attribute.String & Schema.Attribute.Required;
+    DivisiKerja: Schema.Attribute.String & Schema.Attribute.Required;
+    StatusLowongan: Schema.Attribute.Enumeration<['open', 'closed']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'closed'>;
+    TipePekerjaan: Schema.Attribute.Enumeration<
+      ['Fulltime', 'Freelance', 'Part-time', 'Internship', 'Mitra']
+    > &
+      Schema.Attribute.Required;
+    LokasiPekerjaan: Schema.Attribute.String & Schema.Attribute.Required;
+    JamKerja: Schema.Attribute.String & Schema.Attribute.Required;
+    HariKerja: Schema.Attribute.String & Schema.Attribute.Required;
+    MinimalPengalaman: Schema.Attribute.String & Schema.Attribute.Required;
+    TglPosting: Schema.Attribute.Date & Schema.Attribute.Required;
+    DeskripsiPekerjaan: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lowongan-kerja.lowongan-kerja'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPenulisArtikelPenulisArtikel
   extends Struct.CollectionTypeSchema {
   collectionName: 'penulis_artikels';
@@ -814,6 +892,42 @@ export interface ApiPenulisArtikelPenulisArtikel
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::penulis-artikel.penulis-artikel'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSyaratKetentuanSyaratKetentuan
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'syarat_ketentuans';
+  info: {
+    singularName: 'syarat-ketentuan';
+    pluralName: 'syarat-ketentuans';
+    displayName: 'SyaratKetentuan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    SubtitleSyaratKetentuan: Schema.Attribute.String;
+    UpdatedSyaratKetentuan: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.DefaultTo<'2024-10-25'>;
+    PoinIntiPerubahanSyaratKetentuan: Schema.Attribute.String &
+      Schema.Attribute.Required;
+    DetailSyaratKetentuan: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::syarat-ketentuan.syarat-ketentuan'
     > &
       Schema.Attribute.Private;
   };
@@ -1238,9 +1352,12 @@ declare module '@strapi/strapi' {
       'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
       'api::kategori-artikel.kategori-artikel': ApiKategoriArtikelKategoriArtikel;
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
+      'api::kebijakan-privasi.kebijakan-privasi': ApiKebijakanPrivasiKebijakanPrivasi;
       'api::layanan.layanan': ApiLayananLayanan;
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
+      'api::lowongan-kerja.lowongan-kerja': ApiLowonganKerjaLowonganKerja;
       'api::penulis-artikel.penulis-artikel': ApiPenulisArtikelPenulisArtikel;
+      'api::syarat-ketentuan.syarat-ketentuan': ApiSyaratKetentuanSyaratKetentuan;
       'api::tag-artikel.tag-artikel': ApiTagArtikelTagArtikel;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

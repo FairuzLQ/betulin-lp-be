@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "syarat_ketentuans",
+  "info": {
+    "singularName": "syarat-ketentuan",
+    "pluralName": "syarat-ketentuans",
+    "displayName": "SyaratKetentuan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SubtitleSyaratKetentuan": {
+      "type": "string"
+    },
+    "UpdatedSyaratKetentuan": {
+      "type": "date",
+      "default": "2024-10-25",
+      "required": true,
+      "unique": true
+    },
+    "PoinIntiPerubahanSyaratKetentuan": {
+      "type": "string",
+      "required": true
+    },
+    "DetailSyaratKetentuan": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

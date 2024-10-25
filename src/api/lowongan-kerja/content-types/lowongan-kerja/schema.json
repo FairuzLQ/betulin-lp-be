@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lowongan_kerjas",
+  "info": {
+    "singularName": "lowongan-kerja",
+    "pluralName": "lowongan-kerjas",
+    "displayName": "LowonganKerja"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "RoleKerja": {
+      "type": "string",
+      "required": true
+    },
+    "DivisiKerja": {
+      "type": "string",
+      "required": true
+    },
+    "StatusLowongan": {
+      "type": "enumeration",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "required": true,
+      "default": "closed"
+    },
+    "TipePekerjaan": {
+      "type": "enumeration",
+      "enum": [
+        "Fulltime",
+        "Freelance",
+        "Part-time",
+        "Internship",
+        "Mitra"
+      ],
+      "required": true
+    },
+    "LokasiPekerjaan": {
+      "type": "string",
+      "required": true
+    },
+    "JamKerja": {
+      "type": "string",
+      "required": true
+    },
+    "HariKerja": {
+      "type": "string",
+      "required": true
+    },
+    "MinimalPengalaman": {
+      "type": "string",
+      "required": true
+    },
+    "TglPosting": {
+      "type": "date",
+      "required": true
+    },
+    "DeskripsiPekerjaan": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

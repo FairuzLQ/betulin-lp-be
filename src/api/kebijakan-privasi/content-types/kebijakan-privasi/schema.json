@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kebijakan_privasis",
+  "info": {
+    "singularName": "kebijakan-privasi",
+    "pluralName": "kebijakan-privasis",
+    "displayName": "KebijakanPrivasi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SubtitleKebijakanPrivasi": {
+      "type": "string"
+    },
+    "UpdatedKebijakanPrivasi": {
+      "type": "date",
+      "required": true,
+      "default": "2024-10-25"
+    },
+    "PoinIntiPerubahanKebijakanPrivasi": {
+      "type": "string",
+      "required": true
+    },
+    "DetailKebijakanPrivasi": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}
