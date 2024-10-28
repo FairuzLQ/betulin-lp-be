@@ -946,6 +946,38 @@ export interface ApiLayananHeroSectionLayananHeroSection
   };
 }
 
+export interface ApiLokasiLayananSectionLokasiLayananSection
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'lokasi_layanan_sections';
+  info: {
+    singularName: 'lokasi-layanan-section';
+    pluralName: 'lokasi-layanan-sections';
+    displayName: 'LokasiLayananSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    KotaLayanan: Schema.Attribute.String & Schema.Attribute.Required;
+    LatitudeKota: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    LongitudeKota: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    DeskripsiPerLokasi: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lokasi-layanan-section.lokasi-layanan-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLowonganKerjaLowonganKerja
   extends Struct.CollectionTypeSchema {
   collectionName: 'lowongan_kerjas';
@@ -1575,6 +1607,7 @@ declare module '@strapi/strapi' {
       'api::kebijakan-privasi.kebijakan-privasi': ApiKebijakanPrivasiKebijakanPrivasi;
       'api::layanan.layanan': ApiLayananLayanan;
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
+      'api::lokasi-layanan-section.lokasi-layanan-section': ApiLokasiLayananSectionLokasiLayananSection;
       'api::lowongan-kerja.lowongan-kerja': ApiLowonganKerjaLowonganKerja;
       'api::misi-section.misi-section': ApiMisiSectionMisiSection;
       'api::penulis-artikel.penulis-artikel': ApiPenulisArtikelPenulisArtikel;

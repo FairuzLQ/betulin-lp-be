@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lokasi_layanan_sections",
+  "info": {
+    "singularName": "lokasi-layanan-section",
+    "pluralName": "lokasi-layanan-sections",
+    "displayName": "LokasiLayananSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "KotaLayanan": {
+      "type": "string",
+      "required": true
+    },
+    "LatitudeKota": {
+      "type": "decimal",
+      "required": true
+    },
+    "LongitudeKota": {
+      "type": "decimal",
+      "required": true
+    },
+    "DeskripsiPerLokasi": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
