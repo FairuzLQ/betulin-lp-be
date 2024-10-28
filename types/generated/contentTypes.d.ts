@@ -655,6 +655,38 @@ export interface ApiHubungiKamiSectionHubungiKamiSection
   };
 }
 
+export interface ApiKarirHeroSectionKarirHeroSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'karir_hero_sections';
+  info: {
+    singularName: 'karir-hero-section';
+    pluralName: 'karir-hero-sections';
+    displayName: 'KarirHeroSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    KarirTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    KarirSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    KarirButton: Schema.Attribute.String & Schema.Attribute.Required;
+    KarirImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::karir-hero-section.karir-hero-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiKategoriArtikelKategoriArtikel
   extends Struct.CollectionTypeSchema {
   collectionName: 'kategori_artikels';
@@ -864,6 +896,37 @@ export interface ApiLowonganKerjaLowonganKerja
   };
 }
 
+export interface ApiMisiSectionMisiSection extends Struct.CollectionTypeSchema {
+  collectionName: 'misi_sections';
+  info: {
+    singularName: 'misi-section';
+    pluralName: 'misi-sections';
+    displayName: 'MisiSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NomorMisi: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    MisiBetulin: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::misi-section.misi-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPenulisArtikelPenulisArtikel
   extends Struct.CollectionTypeSchema {
   collectionName: 'penulis_artikels';
@@ -959,6 +1022,66 @@ export interface ApiTagArtikelTagArtikel extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::tag-artikel.tag-artikel'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTentangKamiHeroSectionTentangKamiHeroSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'tentang_kami_hero_sections';
+  info: {
+    singularName: 'tentang-kami-hero-section';
+    pluralName: 'tentang-kami-hero-sections';
+    displayName: 'TentangKamiHeroSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    TentangKamiTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    TentangKamiSubtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    TentangKamiImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tentang-kami-hero-section.tentang-kami-hero-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiVisiSectionVisiSection extends Struct.SingleTypeSchema {
+  collectionName: 'visi_sections';
+  info: {
+    singularName: 'visi-section';
+    pluralName: 'visi-sections';
+    displayName: 'VisiSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    VisiBetulin: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::visi-section.visi-section'
     > &
       Schema.Attribute.Private;
   };
@@ -1350,15 +1473,19 @@ declare module '@strapi/strapi' {
       'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
       'api::cara-pesan.cara-pesan': ApiCaraPesanCaraPesan;
       'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
+      'api::karir-hero-section.karir-hero-section': ApiKarirHeroSectionKarirHeroSection;
       'api::kategori-artikel.kategori-artikel': ApiKategoriArtikelKategoriArtikel;
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
       'api::kebijakan-privasi.kebijakan-privasi': ApiKebijakanPrivasiKebijakanPrivasi;
       'api::layanan.layanan': ApiLayananLayanan;
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
       'api::lowongan-kerja.lowongan-kerja': ApiLowonganKerjaLowonganKerja;
+      'api::misi-section.misi-section': ApiMisiSectionMisiSection;
       'api::penulis-artikel.penulis-artikel': ApiPenulisArtikelPenulisArtikel;
       'api::syarat-ketentuan.syarat-ketentuan': ApiSyaratKetentuanSyaratKetentuan;
       'api::tag-artikel.tag-artikel': ApiTagArtikelTagArtikel;
+      'api::tentang-kami-hero-section.tentang-kami-hero-section': ApiTentangKamiHeroSectionTentangKamiHeroSection;
+      'api::visi-section.visi-section': ApiVisiSectionVisiSection;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "karir_hero_sections",
+  "info": {
+    "singularName": "karir-hero-section",
+    "pluralName": "karir-hero-sections",
+    "displayName": "KarirHeroSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "KarirTitle": {
+      "type": "string",
+      "required": true
+    },
+    "KarirSubtitle": {
+      "type": "string",
+      "required": true
+    },
+    "KarirButton": {
+      "type": "string",
+      "required": true
+    },
+    "KarirImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

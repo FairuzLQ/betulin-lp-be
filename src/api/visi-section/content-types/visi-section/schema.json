@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "visi_sections",
+  "info": {
+    "singularName": "visi-section",
+    "pluralName": "visi-sections",
+    "displayName": "VisiSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "VisiBetulin": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

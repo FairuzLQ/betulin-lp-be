@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "tentang_kami_hero_sections",
+  "info": {
+    "singularName": "tentang-kami-hero-section",
+    "pluralName": "tentang-kami-hero-sections",
+    "displayName": "TentangKamiHeroSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "TentangKamiTitle": {
+      "type": "string",
+      "required": true
+    },
+    "TentangKamiSubtitle": {
+      "type": "string",
+      "required": true
+    },
+    "TentangKamiImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
