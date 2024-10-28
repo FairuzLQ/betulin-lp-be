@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "karir_alasan_bergabung_list_sections",
+  "info": {
+    "singularName": "karir-alasan-bergabung-list-section",
+    "pluralName": "karir-alasan-bergabung-list-sections",
+    "displayName": "KarirAlasanBergabungListSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "AlasanNo": {
+      "type": "integer",
+      "required": true
+    },
+    "AlasanBergabung": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

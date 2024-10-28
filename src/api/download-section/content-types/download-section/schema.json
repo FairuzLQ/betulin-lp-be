@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "download_sections",
+  "info": {
+    "singularName": "download-section",
+    "pluralName": "download-sections",
+    "displayName": "DownloadSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DownloadTitle": {
+      "type": "string",
+      "required": true
+    },
+    "DownloadSubtitleAtas": {
+      "type": "string",
+      "required": true
+    },
+    "DownloadSubtitleBawah": {
+      "type": "string",
+      "required": true
+    },
+    "DownloadLink": {
+      "type": "string",
+      "required": true
+    },
+    "DownloadImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

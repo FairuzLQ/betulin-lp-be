@@ -623,6 +623,39 @@ export interface ApiCaraPesanCaraPesan extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDownloadSectionDownloadSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'download_sections';
+  info: {
+    singularName: 'download-section';
+    pluralName: 'download-sections';
+    displayName: 'DownloadSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    DownloadTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    DownloadSubtitleAtas: Schema.Attribute.String & Schema.Attribute.Required;
+    DownloadSubtitleBawah: Schema.Attribute.String & Schema.Attribute.Required;
+    DownloadLink: Schema.Attribute.String & Schema.Attribute.Required;
+    DownloadImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::download-section.download-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHubungiKamiSectionHubungiKamiSection
   extends Struct.SingleTypeSchema {
   collectionName: 'hubungi_kami_sections';
@@ -650,6 +683,66 @@ export interface ApiHubungiKamiSectionHubungiKamiSection
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::hubungi-kami-section.hubungi-kami-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiKarirAlasanBergabungListSectionKarirAlasanBergabungListSection
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'karir_alasan_bergabung_list_sections';
+  info: {
+    singularName: 'karir-alasan-bergabung-list-section';
+    pluralName: 'karir-alasan-bergabung-list-sections';
+    displayName: 'KarirAlasanBergabungListSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AlasanNo: Schema.Attribute.Integer & Schema.Attribute.Required;
+    AlasanBergabung: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::karir-alasan-bergabung-list-section.karir-alasan-bergabung-list-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiKarirAlasanBergabungSectionKarirAlasanBergabungSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'karir_alasan_bergabung_sections';
+  info: {
+    singularName: 'karir-alasan-bergabung-section';
+    pluralName: 'karir-alasan-bergabung-sections';
+    displayName: 'KarirAlasanBergabungSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AlasanTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    AlasanImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::karir-alasan-bergabung-section.karir-alasan-bergabung-section'
     > &
       Schema.Attribute.Private;
   };
@@ -1472,7 +1565,10 @@ declare module '@strapi/strapi' {
       'api::artikel.artikel': ApiArtikelArtikel;
       'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
       'api::cara-pesan.cara-pesan': ApiCaraPesanCaraPesan;
+      'api::download-section.download-section': ApiDownloadSectionDownloadSection;
       'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
+      'api::karir-alasan-bergabung-list-section.karir-alasan-bergabung-list-section': ApiKarirAlasanBergabungListSectionKarirAlasanBergabungListSection;
+      'api::karir-alasan-bergabung-section.karir-alasan-bergabung-section': ApiKarirAlasanBergabungSectionKarirAlasanBergabungSection;
       'api::karir-hero-section.karir-hero-section': ApiKarirHeroSectionKarirHeroSection;
       'api::kategori-artikel.kategori-artikel': ApiKategoriArtikelKategoriArtikel;
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
