@@ -1,4 +1,4 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type {Struct, Schema} from '@strapi/strapi';
 
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
@@ -1021,37 +1021,6 @@ export interface ApiLowonganKerjaLowonganKerja
   };
 }
 
-export interface ApiMisiSectionMisiSection extends Struct.CollectionTypeSchema {
-  collectionName: 'misi_sections';
-  info: {
-    singularName: 'misi-section';
-    pluralName: 'misi-sections';
-    displayName: 'MisiSection';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    NomorMisi: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    MisiBetulin: Schema.Attribute.Text & Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::misi-section.misi-section'
-    > &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiPenulisArtikelPenulisArtikel
   extends Struct.CollectionTypeSchema {
   collectionName: 'penulis_artikels';
@@ -1190,12 +1159,31 @@ export interface ApiVisiSectionVisiSection extends Struct.SingleTypeSchema {
     singularName: 'visi-section';
     pluralName: 'visi-sections';
     displayName: 'VisiSection';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    VisiBetulin: Schema.Attribute.Text & Schema.Attribute.Required;
+    GeneralVisiMisiTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Visi & Misi Kami'>;
+    VisiTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Visi'>;
+    MisiTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Misi'>;
+    VisiButton: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Visi'>;
+    MisiButton: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Misi'>;
+    VisiDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    VisiIcon: Schema.Attribute.Media<'images' | 'files'>;
+    MisiIcon: Schema.Attribute.Media<'images'>;
+    MisiSection: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1609,7 +1597,6 @@ declare module '@strapi/strapi' {
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
       'api::lokasi-layanan-section.lokasi-layanan-section': ApiLokasiLayananSectionLokasiLayananSection;
       'api::lowongan-kerja.lowongan-kerja': ApiLowonganKerjaLowonganKerja;
-      'api::misi-section.misi-section': ApiMisiSectionMisiSection;
       'api::penulis-artikel.penulis-artikel': ApiPenulisArtikelPenulisArtikel;
       'api::syarat-ketentuan.syarat-ketentuan': ApiSyaratKetentuanSyaratKetentuan;
       'api::tag-artikel.tag-artikel': ApiTagArtikelTagArtikel;

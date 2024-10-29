@@ -4,15 +4,61 @@
   "info": {
     "singularName": "visi-section",
     "pluralName": "visi-sections",
-    "displayName": "VisiSection"
+    "displayName": "VisiSection",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "VisiBetulin": {
+    "GeneralVisiMisiTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Visi & Misi Kami"
+    },
+    "VisiTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Visi"
+    },
+    "MisiTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Misi"
+    },
+    "VisiButton": {
+      "type": "string",
+      "default": "Visi",
+      "required": true
+    },
+    "MisiButton": {
+      "type": "string",
+      "required": true,
+      "default": "Misi"
+    },
+    "VisiDescription": {
       "type": "text",
+      "required": true
+    },
+    "VisiIcon": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "MisiIcon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "MisiSection": {
+      "type": "blocks",
       "required": true
     }
   }
