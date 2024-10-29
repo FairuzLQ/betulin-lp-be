@@ -4,7 +4,8 @@
   "info": {
     "singularName": "artikel",
     "pluralName": "artikels",
-    "displayName": "Artikel"
+    "displayName": "Artikel",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,12 +17,12 @@
       "required": true
     },
     "FeaturedImage": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ExcerptArtikel": {
       "type": "text",
@@ -56,6 +57,10 @@
     },
     "TotalViewArtikel": {
       "type": "integer"
+    },
+    "SumberFoto": {
+      "type": "string",
+      "required": true
     }
   }
 }

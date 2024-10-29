@@ -501,6 +501,7 @@ export interface ApiArtikelArtikel extends Struct.CollectionTypeSchema {
     singularName: 'artikel';
     pluralName: 'artikels';
     displayName: 'Artikel';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -528,6 +529,7 @@ export interface ApiArtikelArtikel extends Struct.CollectionTypeSchema {
       'api::tag-artikel.tag-artikel'
     >;
     TotalViewArtikel: Schema.Attribute.Integer;
+    SumberFoto: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
