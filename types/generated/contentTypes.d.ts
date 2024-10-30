@@ -1,4 +1,4 @@
-import type {Struct, Schema} from '@strapi/strapi';
+import type { Struct, Schema } from '@strapi/strapi';
 
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
