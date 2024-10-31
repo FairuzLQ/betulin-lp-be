@@ -530,6 +530,8 @@ export interface ApiArtikelArtikel extends Struct.CollectionTypeSchema {
     >;
     TotalViewArtikel: Schema.Attribute.Integer;
     SumberFoto: Schema.Attribute.String & Schema.Attribute.Required;
+    ArtikelSlug: Schema.Attribute.UID<'TitleArtikel'> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

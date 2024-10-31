@@ -61,6 +61,11 @@
     "SumberFoto": {
       "type": "string",
       "required": true
+    },
+    "ArtikelSlug": {
+      "type": "uid",
+      "targetField": "TitleArtikel",
+      "required": true
     }
   }
 }
