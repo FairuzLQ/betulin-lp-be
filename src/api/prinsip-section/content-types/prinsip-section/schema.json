@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prinsip_sections",
+  "info": {
+    "singularName": "prinsip-section",
+    "pluralName": "prinsip-sections",
+    "displayName": "PrinsipSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "PrinsipTitle": {
+      "type": "string",
+      "required": true
+    },
+    "PrinsipSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "PrinsipImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

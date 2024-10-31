@@ -1056,6 +1056,37 @@ export interface ApiPenulisArtikelPenulisArtikel
   };
 }
 
+export interface ApiPrinsipSectionPrinsipSection
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'prinsip_sections';
+  info: {
+    singularName: 'prinsip-section';
+    pluralName: 'prinsip-sections';
+    displayName: 'PrinsipSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    PrinsipTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    PrinsipSubtitle: Schema.Attribute.Text & Schema.Attribute.Required;
+    PrinsipImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::prinsip-section.prinsip-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSyaratKetentuanSyaratKetentuan
   extends Struct.CollectionTypeSchema {
   collectionName: 'syarat_ketentuans';
@@ -1600,6 +1631,7 @@ declare module '@strapi/strapi' {
       'api::lokasi-layanan-section.lokasi-layanan-section': ApiLokasiLayananSectionLokasiLayananSection;
       'api::lowongan-kerja.lowongan-kerja': ApiLowonganKerjaLowonganKerja;
       'api::penulis-artikel.penulis-artikel': ApiPenulisArtikelPenulisArtikel;
+      'api::prinsip-section.prinsip-section': ApiPrinsipSectionPrinsipSection;
       'api::syarat-ketentuan.syarat-ketentuan': ApiSyaratKetentuanSyaratKetentuan;
       'api::tag-artikel.tag-artikel': ApiTagArtikelTagArtikel;
       'api::tentang-kami-hero-section.tentang-kami-hero-section': ApiTentangKamiHeroSectionTentangKamiHeroSection;
