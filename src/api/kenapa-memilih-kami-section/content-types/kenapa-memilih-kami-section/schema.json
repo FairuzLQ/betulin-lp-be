@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kenapa_memilih_kami_sections",
+  "info": {
+    "singularName": "kenapa-memilih-kami-section",
+    "pluralName": "kenapa-memilih-kami-sections",
+    "displayName": "KenapaMemilihKamiSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "KenapaMemilihKamiTitle": {
+      "type": "string",
+      "required": true
+    },
+    "KenapaMemilihKamiSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "KenapaMemilihKamiIcon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

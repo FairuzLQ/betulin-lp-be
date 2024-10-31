@@ -878,6 +878,38 @@ export interface ApiKebijakanPrivasiKebijakanPrivasi
   };
 }
 
+export interface ApiKenapaMemilihKamiSectionKenapaMemilihKamiSection
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'kenapa_memilih_kami_sections';
+  info: {
+    singularName: 'kenapa-memilih-kami-section';
+    pluralName: 'kenapa-memilih-kami-sections';
+    displayName: 'KenapaMemilihKamiSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    KenapaMemilihKamiTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    KenapaMemilihKamiSubtitle: Schema.Attribute.Text &
+      Schema.Attribute.Required;
+    KenapaMemilihKamiIcon: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kenapa-memilih-kami-section.kenapa-memilih-kami-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLayananLayanan extends Struct.CollectionTypeSchema {
   collectionName: 'layanans';
   info: {
@@ -1626,6 +1658,7 @@ declare module '@strapi/strapi' {
       'api::kategori-artikel.kategori-artikel': ApiKategoriArtikelKategoriArtikel;
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
       'api::kebijakan-privasi.kebijakan-privasi': ApiKebijakanPrivasiKebijakanPrivasi;
+      'api::kenapa-memilih-kami-section.kenapa-memilih-kami-section': ApiKenapaMemilihKamiSectionKenapaMemilihKamiSection;
       'api::layanan.layanan': ApiLayananLayanan;
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
       'api::lokasi-layanan-section.lokasi-layanan-section': ApiLokasiLayananSectionLokasiLayananSection;
