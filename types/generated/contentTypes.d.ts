@@ -523,7 +523,6 @@ export interface ApiArtikelArtikel extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::kategori-artikel.kategori-artikel'
     >;
-    DetailArtikel: Schema.Attribute.Blocks & Schema.Attribute.Required;
     tag_artikels: Schema.Attribute.Relation<
       'manyToMany',
       'api::tag-artikel.tag-artikel'
@@ -532,6 +531,7 @@ export interface ApiArtikelArtikel extends Struct.CollectionTypeSchema {
     SumberFoto: Schema.Attribute.String & Schema.Attribute.Required;
     ArtikelSlug: Schema.Attribute.UID<'TitleArtikel'> &
       Schema.Attribute.Required;
+    DetailArtikel: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
