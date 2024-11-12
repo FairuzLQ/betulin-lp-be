@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "who_are_we_sections",
+  "info": {
+    "singularName": "who-are-we-section",
+    "pluralName": "who-are-we-sections",
+    "displayName": "WhoAreWeSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "WhoAreWeTitle": {
+      "type": "string",
+      "required": true
+    },
+    "WhoAreWeSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "WhoAreWeIcon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

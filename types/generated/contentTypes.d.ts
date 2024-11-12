@@ -1361,6 +1361,39 @@ export interface ApiVisiSectionVisiSection extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiWhoAreWeSectionWhoAreWeSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'who_are_we_sections';
+  info: {
+    singularName: 'who-are-we-section';
+    pluralName: 'who-are-we-sections';
+    displayName: 'WhoAreWeSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    WhoAreWeTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    WhoAreWeSubtitle: Schema.Attribute.Text & Schema.Attribute.Required;
+    WhoAreWeIcon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::who-are-we-section.who-are-we-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -1768,6 +1801,7 @@ declare module '@strapi/strapi' {
       'api::tag-artikel.tag-artikel': ApiTagArtikelTagArtikel;
       'api::tentang-kami-hero-section.tentang-kami-hero-section': ApiTentangKamiHeroSectionTentangKamiHeroSection;
       'api::visi-section.visi-section': ApiVisiSectionVisiSection;
+      'api::who-are-we-section.who-are-we-section': ApiWhoAreWeSectionWhoAreWeSection;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;
