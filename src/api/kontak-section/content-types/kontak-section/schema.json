@@ -1,0 +1,37 @@
+{
+  "kind": "singleType",
+  "collectionName": "kontak_sections",
+  "info": {
+    "singularName": "kontak-section",
+    "pluralName": "kontak-sections",
+    "displayName": "KontakSection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "KontakTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Kontak Kami"
+    },
+    "KontakSubtitle": {
+      "type": "text",
+      "required": true,
+      "default": "Jangan ragu untuk menghubungi kami. Kami siap membantu Anda dengan sepenuh hati."
+    },
+    "KontakHP": {
+      "type": "biginteger",
+      "required": true
+    },
+    "KontakEmail": {
+      "type": "email",
+      "required": true
+    },
+    "KontakLocation": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

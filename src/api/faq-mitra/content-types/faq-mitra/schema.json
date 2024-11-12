@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faq_mitras",
+  "info": {
+    "singularName": "faq-mitra",
+    "pluralName": "faq-mitras",
+    "displayName": "FAQMitra"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FAQMitraPertanyaan": {
+      "type": "string"
+    },
+    "FAQMitraJawaban": {
+      "type": "text"
+    }
+  }
+}

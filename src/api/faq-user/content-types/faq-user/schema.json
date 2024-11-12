@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faq_users",
+  "info": {
+    "singularName": "faq-user",
+    "pluralName": "faq-users",
+    "displayName": "FAQUser"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "FAQUserPertanyaan": {
+      "type": "string",
+      "required": true
+    },
+    "FAQUserJawaban": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

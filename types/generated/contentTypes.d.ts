@@ -660,6 +660,64 @@ export interface ApiDownloadSectionDownloadSection
   };
 }
 
+export interface ApiFaqMitraFaqMitra extends Struct.CollectionTypeSchema {
+  collectionName: 'faq_mitras';
+  info: {
+    singularName: 'faq-mitra';
+    pluralName: 'faq-mitras';
+    displayName: 'FAQMitra';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    FAQMitraPertanyaan: Schema.Attribute.String;
+    FAQMitraJawaban: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::faq-mitra.faq-mitra'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFaqUserFaqUser extends Struct.CollectionTypeSchema {
+  collectionName: 'faq_users';
+  info: {
+    singularName: 'faq-user';
+    pluralName: 'faq-users';
+    displayName: 'FAQUser';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    FAQUserPertanyaan: Schema.Attribute.String & Schema.Attribute.Required;
+    FAQUserJawaban: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::faq-user.faq-user'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHubungiKamiSectionHubungiKamiSection
   extends Struct.SingleTypeSchema {
   collectionName: 'hubungi_kami_sections';
@@ -907,6 +965,42 @@ export interface ApiKenapaMemilihKamiSectionKenapaMemilihKamiSection
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::kenapa-memilih-kami-section.kenapa-memilih-kami-section'
+    > &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiKontakSectionKontakSection extends Struct.SingleTypeSchema {
+  collectionName: 'kontak_sections';
+  info: {
+    singularName: 'kontak-section';
+    pluralName: 'kontak-sections';
+    displayName: 'KontakSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    KontakTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Kontak Kami'>;
+    KontakSubtitle: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Jangan ragu untuk menghubungi kami. Kami siap membantu Anda dengan sepenuh hati.'>;
+    KontakHP: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    KontakEmail: Schema.Attribute.Email & Schema.Attribute.Required;
+    KontakLocation: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kontak-section.kontak-section'
     > &
       Schema.Attribute.Private;
   };
@@ -1653,6 +1747,8 @@ declare module '@strapi/strapi' {
       'api::beranda-hero-section.beranda-hero-section': ApiBerandaHeroSectionBerandaHeroSection;
       'api::cara-pesan.cara-pesan': ApiCaraPesanCaraPesan;
       'api::download-section.download-section': ApiDownloadSectionDownloadSection;
+      'api::faq-mitra.faq-mitra': ApiFaqMitraFaqMitra;
+      'api::faq-user.faq-user': ApiFaqUserFaqUser;
       'api::hubungi-kami-section.hubungi-kami-section': ApiHubungiKamiSectionHubungiKamiSection;
       'api::karir-alasan-bergabung-list-section.karir-alasan-bergabung-list-section': ApiKarirAlasanBergabungListSectionKarirAlasanBergabungListSection;
       'api::karir-alasan-bergabung-section.karir-alasan-bergabung-section': ApiKarirAlasanBergabungSectionKarirAlasanBergabungSection;
@@ -1661,6 +1757,7 @@ declare module '@strapi/strapi' {
       'api::kategori-layanan.kategori-layanan': ApiKategoriLayananKategoriLayanan;
       'api::kebijakan-privasi.kebijakan-privasi': ApiKebijakanPrivasiKebijakanPrivasi;
       'api::kenapa-memilih-kami-section.kenapa-memilih-kami-section': ApiKenapaMemilihKamiSectionKenapaMemilihKamiSection;
+      'api::kontak-section.kontak-section': ApiKontakSectionKontakSection;
       'api::layanan.layanan': ApiLayananLayanan;
       'api::layanan-hero-section.layanan-hero-section': ApiLayananHeroSectionLayananHeroSection;
       'api::lokasi-layanan-section.lokasi-layanan-section': ApiLokasiLayananSectionLokasiLayananSection;
